@@ -52,7 +52,7 @@ export default function App() {
           onPress={()=>{
             if(Email==="Edu" && pasword==="Admin"){
               Alert.alert("Bienvenida",` Hola ${Email} Bienvenido`);
-              navigation.navigation('Mapas')
+              navigation.navigate('Mapas')
             }else{
               Alert.alert("Validacion",` Lo sentimos Tu Email o Contraseña no fueron correctos Intenta Nuevamente`)
             }
