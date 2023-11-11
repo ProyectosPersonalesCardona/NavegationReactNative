@@ -4,7 +4,6 @@ import {
   FlatList,
   StyleSheet,
   Text,
-  StatusBar,
   Image,
   TouchableOpacity,
   Alert
@@ -117,8 +116,7 @@ const Listados = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-    backgroundColor:'#000'
+    backgroundColor:'#fff'
   },
   Item: {
     backgroundColor: 'rgba(255,255,255,0.2)',
@@ -128,7 +126,7 @@ const styles = StyleSheet.create({
     flexDirection:"row"
   },
   title: {
-    color:"#fff",
+    color:"#000",
     paddingTop:10,
     fontSize: 26,
   },

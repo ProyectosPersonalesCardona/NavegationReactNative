@@ -1,38 +1,91 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import React from 'react';
+import {SafeAreaView, StyleSheet, TextInput, Button, View,Alert, Text} from 'react-native';
 
-const [nombre, onChangeText] = React.useState('Useless Text');
-const [number, onChangeNumber] = React.useState('');
+const TextInputExample = () => {
+  const [Nombre, onChangeText] = React.useState('');
+  const [Edad, onChangeNumber] = React.useState('');
+  const [Email, onChangeEmail] = React.useState('');
+  const [pasword, onChangePas] = React.useState('');
 
-const Formularios =()=>{
   return (
-    <View>
-      <Text>Ingrese su texto</Text>
-      <TextInput 
-        placeholder='Nombre'
-        value={nombre}
-
+    <SafeAreaView style={styles.container} >
+      <Text style={styles.tit}>Bienvenido Al Registro</Text>
+      <View style={styles.formulario}>
+      <Text style={styles.texto}>Formulario De Datos</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        placeholder="Nombre"
+        value={Nombre}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeNumber}
+        value={Edad}
+        placeholder="Edad"
+        keyboardType="decimal-pad"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeEmail}
+        value={Email}
+        placeholder="Email"
+        keyboardType='email-address'
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangePas}
+        value={pasword}
+        placeholder="Contraseña"
+        keyboardType="default"
       />
       <Button 
-        tittle='saludar'
-        color='#863647'
+        title='Ingresar'
+        color='#7f8fa6'
         accessiblityLabel='Saludar a una Persona'
         onPress={()=>{
-          Alert.alert("saludar",` hola mundo ${nombre}`)
+          Alert.alert("Bienvenida",` Hola ${Nombre} Bienvenido`)
         }}> 
       </Button>
-    </View>
+      </View>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor:'#fff'
   },
+  input: {
+    height: 40,
+    marginHorizontal: 1,
+    marginBottom:20,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor:'#fff',
+    borderRadius:5
+  },
+  texto:{
+    color:'#7f8fa6',
+    fontSize:25,
+    paddingVertical:20
+  },
+  formulario:{
+    margin:20,
+    height:400,
+    borderRadius:10,
+    padding:10,
+    alignContent:'center' ,
+    backgroundColor:'#000'
+  },
+  tit:{
+    marginTop:80,
+    textTransform:'uppercase',
+    textAlign:'center',
+    fontSize:25,
+    color:'#000'
+  }
 });
 
-
-export default Formularios;
+export default TextInputExample;

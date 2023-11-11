@@ -134,23 +134,22 @@ const Listados = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(34,34,147,1) 25%, rgba(117,21,196,1) 100%)',
+    backgroundColor:'#fff',
     padding: 5,
-    marginTop:25
   },
   Item: {
     flex: 1,
     margin:5,
     padding:5,
     shadow: 'rgba(255,255,255,1)',
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: 'rgba(0,0,0,0.1)',
     alignItems:"center", 
     borderRadius:10,
     height:200
   },
   title: {
     fontSize: 16,
-    color:"#fff",
+    color:"#000",
     margin:12
   },
   imagen:{
