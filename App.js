@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 import React from 'react';
 import {SafeAreaView, StyleSheet, TextInput, Button, View,Alert, Text} from 'react-native';
@@ -50,7 +50,7 @@ export default function App() {
           color='#7f8fa6'
           accessiblityLabel='Saludar a una Persona'
           onPress={()=>{
-            if(Email==="Edu" && pasword==="Admin"){
+            if(Email==="Examen1@unitec.edu" && pasword==="Admin"){
               Alert.alert("Bienvenida",` Hola ${Email} Bienvenido`);
               navigation.navigate('Mapas')
             }else{
@@ -63,11 +63,65 @@ export default function App() {
     );
   };
   
-  
 function Mapas() {
+
+  const points=[
+    {
+      titulo:"Honduras",
+      ubicacion:{
+        latitude: 14.555285993947152,
+        longitude:-86.56461460850234,
+      },
+    descripcion:" Pais de Centro America"
+    },
+    {
+      titulo:"Panama",
+      ubicacion:{
+        latitude: 11.378812807753466,
+        longitude:-79.95334692299366,
+      },
+    descripcion:" Pais de Centro America"
+    },
+    {
+      titulo:"Nicaragua",
+      ubicacion:{
+        latitude: 13.327070235166378,
+        longitude:-85.12974696233869,
+      },
+    descripcion:" Pais de Centro America"
+    }
+  ];
+
+
+   const POINT=()=>{
+    return points.map((poi, i)=>{
+      <Marker
+        key={i}
+        coordinate={poi.ubicacion}
+        title={poi.titulo}
+        description={poi.descripcion}
+      />
+    })
+   }
+
+
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} />
+      <MapView style={styles.map} 
+        onRegionChange={region=> console.log(region)}
+        initialRegion={{"latitude": 14.555285993947152, "latitudeDelta": 12.449216950003548, "longitude": -86.56461460850234, "longitudeDelta": 7.338866643260047}}
+      >
+        {POINT()}
+        
+      </MapView>
+      <Button 
+          title='Ver Una Ubicacion'
+          color='#7f8fa6'
+          accessiblityLabel='Saludar a una Persona'
+          onPress={()=>{
+            
+          }}> 
+          </Button>
     </View>
   );
 }
@@ -81,8 +135,10 @@ const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: '100%',
-  }, container: {
+    height: '90%',
+    marginBottom:10
+  },
+  container: {
     flex: 1,
     backgroundColor:'#fff'
   },
