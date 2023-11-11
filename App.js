@@ -94,14 +94,14 @@ function Mapas() {
 
 
    const POINT=()=>{
-    return points.map((poi, i)=>{
+    return points.map((poi, i)=>
       <Marker
         key={i}
         coordinate={poi.ubicacion}
         title={poi.titulo}
         description={poi.descripcion}
       />
-    })
+    )
    }
 
 
