@@ -1,42 +1,33 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, TextInput, Button, View,Alert, Text} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const TextInputExample = () => {
-  const [Nombre, onChangeText] = React.useState('');
-  const [Edad, onChangeNumber] = React.useState('');
+
+
+function Login({ navigation }) {
   const [Email, onChangeEmail] = React.useState('');
   const [pasword, onChangePas] = React.useState('');
 
   return (
     <SafeAreaView style={styles.container} >
-      <Text style={styles.tit}>Bienvenido Al Registro</Text>
+      <Text style={styles.tit}>Bienvenido</Text>
+
       <View style={styles.formulario}>
-      <Text style={styles.texto}>Formulario De Datos</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        placeholder="Nombre"
-        value={Nombre}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={Edad}
-        placeholder="Edad"
-        keyboardType="decimal-pad"
-      />
+      <Text style={styles.texto}>Login</Text>
       <TextInput
         style={styles.input}
         onChangeText={onChangeEmail}
         value={Email}
-        placeholder="Email"
+        placeholder="Ingresa tu email"
         keyboardType='email-address'
       />
       <TextInput
         style={styles.input}
         onChangeText={onChangePas}
         value={pasword}
-        placeholder="Contraseña"
+        placeholder="Ingresa tu contraseña"
+        secureTextEntry={true}
         keyboardType="default"
       />
       <Button 
@@ -44,13 +35,19 @@ const TextInputExample = () => {
         color='#7f8fa6'
         accessiblityLabel='Saludar a una Persona'
         onPress={()=>{
-          Alert.alert("Bienvenida",` Hola ${Nombre} Bienvenido`)
+          if(Email==="Edu" && pasword==="Admin"){
+            Alert.alert("Bienvenida",` Hola ${Email} Bienvenido`);
+            navigation.navigation('mapas')
+          }else{
+            Alert.alert("Validacion",` Lo sentimos Tu Email o Contraseña no fueron correctos Intenta Nuevamente`)
+          }
         }}> 
       </Button>
       </View>
     </SafeAreaView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -88,4 +85,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TextInputExample;
+export default Login;
