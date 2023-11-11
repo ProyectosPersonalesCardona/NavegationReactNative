@@ -77,8 +77,8 @@ function Mapas() {
     {
       titulo:"Panama",
       ubicacion:{
-        latitude: 11.378812807753466,
-        longitude:-79.95334692299366,
+        latitude: 8.64493308456712,
+        longitude:-80.04094619303942,
       },
     descripcion:" Pais de Centro America"
     },
